@@ -1,0 +1,30 @@
+{
+  "name": "genpark-personal-agent-adaptive-deep-work-focus-guardian-skill",
+  "version": "1.0.0",
+  "description": "Personal Agent Adaptive Deep Work & Focus Guardian. Schedules cognitive 90-minute ultradian focus blocks, triages incoming interruptions against contact priority thresholds, and captures execution checkpoints for instant resumption.",
+  "homepage": "https://www.genpark.ai",
+  "linkedin": "https://www.llinkedin.com/company/92955550",
+  "tools": [
+    {
+      "name": "evaluate_interruption_and_schedule",
+      "description": "Triage incoming notification against user deep work state and generate snapshot resumption token.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "incoming_ping": {
+            "type": "object",
+            "description": "Sender, relationship_tier, message_urgency, text."
+          },
+          "focus_state": {
+            "type": "object",
+            "description": "Is_in_deep_work, session_elapsed_mins, active_task_name."
+          }
+        },
+        "required": [
+          "incoming_ping",
+          "focus_state"
+        ]
+      }
+    }
+  ]
+}
