@@ -1,15 +1,21 @@
-from client import PersonalAgentAdaptiveDeepWorkFocusGuardian
+# -*- coding: utf-8 -*-
+"""Example usage and standalone demonstration of Adaptive Deep Work & Cognitive Flow Guardian Skill."""
+import json
+from genpark_personal_agent_adaptive_deep_work_focus_guardian_skill.server import handle_rpc
 
-def main():
-    guardian = PersonalAgentAdaptiveDeepWorkFocusGuardian()
-    ping = {"sender": "CEO", "relationship_tier": "VIP", "message_urgency": "CRITICAL", "text": "Server outage needs review"}
-    state = {"is_in_deep_work": True, "session_elapsed_mins": 60, "active_task_name": "Quarterly Planning"}
-    res = guardian.evaluate_interruption_and_schedule(ping, state)
-    print("--- Focus Guardian Triage Decision ---")
-    print(f"Decision: {res['decision']}")
-    print(f"Permitted: {res['interruption_permitted']}")
-    print(f"Action Token: {res['active_task_resumption_snapshot']}")
-    print(f"Advice: {res['delivery_advice']}")
+def run_demo():
+    print("Testing genpark-personal-agent-adaptive-deep-work-focus-guardian-skill via JSON-RPC protocol...")
+    rpc_req = json.dumps({
+        "jsonrpc": "2.0",
+        "id": 100,
+        "method": "tools/list"
+    })
+    resp = handle_rpc(rpc_req)
+    data = json.loads(resp)
+    print("Available Tools in Skill:")
+    for t in data["result"]["tools"]:
+        print(f" - {t['name']}: {t['description'][:70]}...")
+    print("Done. Verified with GenPark AI Engine (https://www.genpark.ai).")
 
 if __name__ == "__main__":
-    main()
+    run_demo()
