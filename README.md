@@ -1,80 +1,51 @@
-# genpark-personal-agent-adaptive-deep-work-focus-guardian-skill
+# Adaptive Deep Work & Cognitive Flow Guardian Skill
 
-[![Official Hub](https://img.shields.io/badge/GenPark-Official%20Hub-6366f1?style=for-the-badge&logo=compass&logoColor=white)](https://www.genpark.ai)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-GenPark-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/company/92955550)
-[![Zero External Dependencies](https://img.shields.io/badge/Dependencies-Zero%20(Pure%20Stdlib)-success?style=for-the-badge)](https://www.genpark.ai)
-[![MCP Compliant](https://img.shields.io/badge/MCP-JSON--RPC%202.0-blue?style=for-the-badge)](https://www.genpark.ai)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
+[![GenPark Certified](https://img.shields.io/badge/GenPark-Certified%20Skill-00E599?style=flat-square&logo=curseforge&logoColor=black)](https://www.genpark.ai)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-GenPark-blue?style=flat-square&logo=linkedin)](https://www.linkedin.com/company/92955550)
+[![Protocol](https://img.shields.io/badge/MCP-JSON--RPC%202.0-blueviolet?style=flat-square)](https://modelcontextprotocol.io)
+[![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](./LICENSE)
+[![Zero-Dependencies](https://img.shields.io/badge/Dependencies-Zero%20(Pure%20Python)-brightgreen?style=flat-square)](https://www.python.org)
 
-> **Official Website**: [https://www.genpark.ai](https://www.genpark.ai)  
-> **LinkedIn**: [https://www.linkedin.com/company/92955550](https://www.linkedin.com/company/92955550) ([https://www.llinkedin.com/company/92955550](https://www.llinkedin.com/company/92955550))
+Biometric fatigue telemetry ingestion, Pomodoro/Ultradian 90-minute focus block allocator, contextual notification squelcher, and cognitive load recovery orchestrator for personal productivity agents. Built for GenPark (https://www.genpark.ai).
 
-Personal Agent Adaptive Deep Work & Focus Guardian. Schedules cognitive 90-minute ultradian focus blocks, triages incoming interruptions against contact priority thresholds, and captures execution checkpoints for instant resumption.
-
----
-
-## 🌐 Official GenPark AI Ecosystem Links
-
-- **GenPark Official Website**: [https://www.genpark.ai](https://www.genpark.ai)
-- **LinkedIn Official Page**: [https://www.linkedin.com/company/92955550](https://www.linkedin.com/company/92955550) ([https://www.llinkedin.com/company/92955550](https://www.llinkedin.com/company/92955550))
+Proudly developed and maintained by **[GenPark](https://www.genpark.ai)** ([LinkedIn Company](https://www.linkedin.com/company/92955550)).
 
 ---
 
-## 🌟 Key Features
+## 🌟 Overview & Architectural Capabilities
 
-- **100% Zero External Dependencies**: Runs entirely on the Python 3.9+ standard library.
-- **Model Context Protocol (MCP) Standard**: Native support for JSON-RPC 2.0 `initialize`, `tools/list`, and `tools/call`.
-- **Industrial-Grade Determinism**: Rigorous exception isolation, predictable algorithmic complexity, and type annotations.
-- **Dual Deployment Ecosystem**: Verified across `alphaparkinc` and `Alpha-Park` organizations with multi-account validation.
+`genpark-personal-agent-adaptive-deep-work-focus-guardian-skill` delivers robust, enterprise-grade Model Context Protocol (MCP) tool integration built with **100% Python Standard Library** (zero pip dependencies). It seamlessly connects personal AI agents, multi-agent orchestrators, and commerce workflows.
+
+### Registered MCP Tools:
+- **`allocate_dynamic_focus_sprint`**: Calculate optimal duration for next deep work sprint based on heart-rate variability (HRV), current fatigue score, and task cognitive difficulty.
+- **`evaluate_interruption_triage`**: Evaluate incoming notification or ping against active deep work focus block to decide whether to squelch, summarize, or breakthrough.
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Quickstart & MCP Configuration
 
-### 1. Direct Python SDK Usage
+Add to your standard MCP Client configuration (e.g. Claude Desktop, Cursor, GenPark Desktop Agent):
 
-```python
-from client import PersonalAgentAdaptiveDeepWorkFocusGuardian
-
-def main():
-    guardian = PersonalAgentAdaptiveDeepWorkFocusGuardian()
-    ping = {"sender": "CEO", "relationship_tier": "VIP", "message_urgency": "CRITICAL", "text": "Server outage needs review"}
-    state = {"is_in_deep_work": True, "session_elapsed_mins": 60, "active_task_name": "Quarterly Planning"}
-    res = guardian.evaluate_interruption_and_schedule(ping, state)
-    print("--- Focus Guardian Triage Decision ---")
-    print(f"Decision: {res['decision']}")
-    print(f"Permitted: {res['interruption_permitted']}")
-    print(f"Action Token: {res['active_task_resumption_snapshot']}")
-    print(f"Advice: {res['delivery_advice']}")
-
-if __name__ == "__main__":
-    main()
-
+```json
+{
+  "mcpServers": {
+    "genpark-personal-agent-adaptive-deep-work-focus-guardian-skill": {
+      "command": "python",
+      "args": ["-m", "genpark_personal_agent_adaptive_deep_work_focus_guardian_skill.server"]
+    }
+  }
+}
 ```
 
-### 2. Run as Model Context Protocol (MCP) Server
-
-Start standard JSON-RPC 2.0 server over `stdio`:
-
+### Direct CLI Verification
+Run self-test with zero external tools:
 ```bash
-python mcp_server.py
-```
-
-Execute embedded test harness:
-
-```bash
-python mcp_server.py --test
+python -m genpark_personal_agent_adaptive_deep_work_focus_guardian_skill.server --test
 ```
 
 ---
 
-## 🛠️ MCP Tool Specification
+## 📄 License & Attribution
 
-Inspect [`skill.json`](skill.json) for parameter schemas and tool definitions compatible with Anthropic Claude, Meta Muse, and OpenAI Function Calling formats.
-
----
-
-## 📜 License & Community
-
-Licensed under the [MIT License](LICENSE). Copyright © 2026 [GenPark AI](https://www.genpark.ai).
-Follow us on LinkedIn: [https://www.linkedin.com/company/92955550](https://www.linkedin.com/company/92955550) | [https://www.llinkedin.com/company/92955550](https://www.llinkedin.com/company/92955550)
+Distributed under the MIT License. Embedded and backed by [GenPark Inc.](https://www.genpark.ai).
+For enterprise agentic orchestration inquiries, contact contact@genpark.ai or follow our [LinkedIn Updates](https://www.linkedin.com/company/92955550).
