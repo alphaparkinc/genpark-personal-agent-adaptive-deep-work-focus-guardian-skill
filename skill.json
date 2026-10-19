@@ -1,28 +1,76 @@
 {
   "name": "genpark-personal-agent-adaptive-deep-work-focus-guardian-skill",
+  "title": "Adaptive Deep Work & Cognitive Flow Guardian Skill",
   "version": "1.0.0",
-  "description": "Personal Agent Adaptive Deep Work & Focus Guardian. Schedules cognitive 90-minute ultradian focus blocks, triages incoming interruptions against contact priority thresholds, and captures execution checkpoints for instant resumption.",
+  "description": "Biometric fatigue telemetry ingestion, Pomodoro/Ultradian 90-minute focus block allocator, contextual notification squelcher, and cognitive load recovery orchestrator for personal productivity agents. Built for GenPark (https://www.genpark.ai).",
   "homepage": "https://www.genpark.ai",
-  "linkedin": "https://www.llinkedin.com/company/92955550",
+  "organization": {
+    "name": "GenPark Inc.",
+    "url": "https://www.genpark.ai",
+    "linkedin": "https://www.linkedin.com/company/92955550"
+  },
+  "mcp_version": "2024-11-05",
+  "category": "personal-agent",
   "tools": [
     {
-      "name": "evaluate_interruption_and_schedule",
-      "description": "Triage incoming notification against user deep work state and generate snapshot resumption token.",
+      "name": "allocate_dynamic_focus_sprint",
+      "description": "Calculate optimal duration for next deep work sprint based on heart-rate variability (HRV), current fatigue score, and task cognitive difficulty.",
       "inputSchema": {
         "type": "object",
         "properties": {
-          "incoming_ping": {
-            "type": "object",
-            "description": "Sender, relationship_tier, message_urgency, text."
+          "user_hrv_rmssd_ms": {
+            "type": "number",
+            "description": "Root Mean Square of Successive Differences in ms (e.g. 55.0)"
           },
-          "focus_state": {
-            "type": "object",
-            "description": "Is_in_deep_work, session_elapsed_mins, active_task_name."
+          "hours_awake": {
+            "type": "number"
+          },
+          "task_complexity": {
+            "type": "string",
+            "enum": [
+              "light_administrative",
+              "moderate_analytical",
+              "high_creative_architectural"
+            ]
+          },
+          "consecutive_sprints_completed": {
+            "type": "integer"
           }
         },
         "required": [
-          "incoming_ping",
-          "focus_state"
+          "user_hrv_rmssd_ms",
+          "hours_awake",
+          "task_complexity"
+        ]
+      }
+    },
+    {
+      "name": "evaluate_interruption_triage",
+      "description": "Evaluate incoming notification or ping against active deep work focus block to decide whether to squelch, summarize, or breakthrough.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "sender_priority": {
+            "type": "string",
+            "enum": [
+              "vip_family",
+              "executive_leadership",
+              "peer_coworker",
+              "marketing_cold"
+            ]
+          },
+          "remaining_focus_minutes": {
+            "type": "integer"
+          },
+          "message_urgency_score": {
+            "type": "number",
+            "description": "0.0 to 1.0"
+          }
+        },
+        "required": [
+          "sender_priority",
+          "remaining_focus_minutes",
+          "message_urgency_score"
         ]
       }
     }
